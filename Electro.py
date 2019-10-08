@@ -39,16 +39,16 @@ def setup(bot):
     logger = logging.getLogger('bot')
     bot.add_cog(DiscordBotsOrgAPI(bot))
 
-bot = commands.Bot(command_prefix=commands.when_mentioned_or('e!'))
+bot = commands.Bot(command_prefix=commands.when_mentioned_or('hjkbvhjvfhhge!'))
 bot.remove_command("help")
 
 async def status_task():
     while True:
-        await bot.change_presence(game=discord.Game(name='For e!help', url='https://twitch.tv/myname', type=1))
+        await bot.change_presence(game=discord.Game(name='Happy Halloween!', url='https://twitch.tv/myname', type=1))
         await asyncio.sleep(12)
-        await bot.change_presence(game=discord.Game(name='With '+str(len(set(bot.get_all_members())))+' Users', url='https://twitch.tv/myname', type=1))
+        await bot.change_presence(game=discord.Game(name='Get spookyyyy!', url='https://twitch.tv/myname', type=1))
         await asyncio.sleep(12)
-        await bot.change_presence(game=discord.Game(name='in '+str(len(bot.servers))+' Guilds', url='https://twitch.tv/myname', type=1))
+        await bot.change_presence(game=discord.Game(name='Trick or Treat?', url='https://twitch.tv/myname', type=1))
         await asyncio.sleep(12)
 
 @bot.event
@@ -69,135 +69,6 @@ def is_owner(ctx):
 def is_masstyper(ctx):
     return ctx.message.author.id == "488353416599306270", "517729298355060736"      
    
-@bot.command(pass_context = True)
-@commands.check(is_owner)
-async def servers(ctx):
-  servers = list(bot.servers)
-  await bot.say(f"Connected on {str(len(servers))} servers:")
-  await bot.say('Error too many servers')
-  print('nothing')
- 																
-@bot.command(pass_context = True)
-@commands.cooldown(1, 5, commands.BucketType.user)
-async def ping(ctx):
-    channel = ctx.message.channel
-    t1 = time.perf_counter()
-    await bot.send_typing(channel)
-    t2 = time.perf_counter()
-    await bot.say("Pong! {}ms".format(round((t2-t1)*1000)))
-
-@bot.command(pass_context = True)
-@commands.has_permissions(manage_nicknames=True)     
-async def setnick(ctx, user: discord.Member, *, nickname):
-    await bot.change_nickname(user, nickname)
-    await bot.say("<:ElectroSucess:527118398753079317> {}'s nickname was changed to {}!".format(user, nickname))
-    await bot.delete_message(ctx.message)
-
-@bot.command(pass_context=True)
-async def invite():
-	embed=discord.Embed(description="Here are some useful links! If you have any questions about the bot, feel free to join the support guild and ask!.\nThanks you for using the bot! 💙 from the bot developer `ADIB HOQUE#6969`", color=0x428CFF)
-	embed.set_author(name="ELECTRO's Invite URL", icon_url='https://cdn.discordapp.com/avatars/510491243155816449/7094db85acd19720905e98f653bcad74.png?size=128')
-	embed.add_field(name = 'Invite URL',value ='[https://invite.electro.xyz](https://discordapp.com/api/oauth2/authorize?client_id=510491243155816449&permissions=8&scope=bot)',inline = False)
-	embed.add_field(name = 'Support Server',value ='[https://support.electro.xyz](https://discord.gg/WpFAGyx)',inline = False)
-	embed.set_footer(text='We hope you have fun with the bot!', icon_url='https://cdn.discordapp.com/avatars/510491243155816449/7094db85acd19720905e98f653bcad74.png?size=128')
-	await bot.say('https://discord.gg/WpFAGyx', embed=embed)
-	
-@bot.command(pass_context=True)
-async def link():
-	embed=discord.Embed(description="Here are some useful links! If you have any questions about the bot, feel free to join the support guild and ask!.\nThanks you for using the bot! 💙 from the bot developer `ADIB HOQUE#6969`", color=0x428CFF)
-	embed.set_author(name="ELECTRO's Invite URL", icon_url='https://cdn.discordapp.com/avatars/510491243155816449/7094db85acd19720905e98f653bcad74.png?size=128')
-	embed.add_field(name = 'Invite URL',value ='[https://invite.electro.xyz](https://discordapp.com/api/oauth2/authorize?client_id=510491243155816449&permissions=8&scope=bot)',inline = False)
-	embed.add_field(name = 'Support Server',value ='[https://support.electro.xyz](https://discord.gg/WpFAGyx)',inline = False)
-	embed.set_footer(text='We hope you have fun with the bot!', icon_url='https://cdn.discordapp.com/avatars/510491243155816449/7094db85acd19720905e98f653bcad74.png?size=128')
-	await bot.say('https://discord.gg/WpFAGyx', embed=embed)
-	
-@bot.command(pass_context=True)
-async def server():
-	embed=discord.Embed(description="Here are some useful links! If you have any questions about the bot, feel free to join the support guild and ask!.\nThanks you for using the bot! 💙 from the bot developer `ADIB HOQUE#6969`", color=0x428CFF)
-	embed.set_author(name="ELECTRO's Support Server", icon_url='https://cdn.discordapp.com/avatars/510491243155816449/7094db85acd19720905e98f653bcad74.png?size=128')
-	embed.add_field(name = 'Invite URL',value ='[https://invite.electro.xyz](https://discordapp.com/api/oauth2/authorize?client_id=510491243155816449&permissions=8&scope=bot)',inline = False)
-	embed.add_field(name = 'Support Server',value ='[https://support.electro.xyz](https://discord.gg/WpFAGyx)',inline = False)
-	embed.set_footer(text='We hope you have fun with the bot!', icon_url='https://cdn.discordapp.com/avatars/510491243155816449/7094db85acd19720905e98f653bcad74.png?size=128')
-	await bot.say('https://discord.gg/WpFAGyx', embed=embed)
-	
-@bot.command(pass_context=True)
-async def support():
-	embed=discord.Embed(description="Here are some useful links! If you have any questions about the bot, feel free to join the support guild and ask!.\nThanks you for using the bot! 💙 from the bot developer `ADIB HOQUE#6969`", color=0x428CFF)
-	embed.set_author(name="ELECTRO's Support Server", icon_url='https://cdn.discordapp.com/avatars/510491243155816449/7094db85acd19720905e98f653bcad74.png?size=128')
-	embed.add_field(name = 'Invite URL',value ='[https://invite.electro.xyz](https://discordapp.com/api/oauth2/authorize?client_id=510491243155816449&permissions=8&scope=bot)',inline = False)
-	embed.add_field(name = 'Support Server',value ='[https://support.electro.xyz](https://discord.gg/WpFAGyx)',inline = False)
-	embed.set_footer(text='We hope you have fun with the bot!', icon_url='https://cdn.discordapp.com/avatars/510491243155816449/7094db85acd19720905e98f653bcad74.png?size=128')
-	await bot.say('https://discord.gg/WpFAGyx', embed=embed)
-	
-@bot.command(pass_context=True)  
-@commands.has_permissions(kick_members=True)     
-async def kick(ctx, user:discord.Member, *, reason:str):
-    if reason is None:
-      await bot.say('<:ElectroFail:527118399453528103>**Please mention a user to kick & specify a reason for kicking out!**\nEXAMPLE:`e!kick <@user or id> <reason>`')
-    if user.server_permissions.kick_members:
-      await bot.say("<:ElectroFail:527118399453528103>**He is a Mod/Admin, I can't do that!**")
-      return
-    else:
-      await bot.send_message(user, 'You were kicked out from **{}**, {}!'.format(ctx.message.server.name, reason))
-      await bot.kick(user)
-      await bot.say('<:ElectroSucess:527118398753079317>{} was kicked, {}!'.format(user, reason))
-      await bot.delete_message(ctx.message)
-      for channel in user.server.channels:
-        if channel.name == '📡electro-logs':
-            embed=discord.Embed(title="KICK COMMAND USED", description="**User:** {0}\n**Moderator:** {1}".format(user, ctx.message.author), color=0x429CFF)
-            embed.timestamp = datetime.datetime.utcnow()
-            embed.set_footer(text ='USER KICKED')
-            await bot.send_message(channel, embed=embed)
-    
-@bot.command(pass_context=True)  
-@commands.has_permissions(ban_members=True)     
-async def ban(ctx, user:discord.Member, *, reason:str):
-    if reason is None:
-      await bot.say('<:ElectroFail:527118399453528103>**Please mention a user to ban & specify a reason for banning!\nExample:`e!ban <@user or id> <reason>**')
-    if user.server_permissions.kick_members:
-      await bot.say("<:ElectroFail:527118399453528103>**He is a Mod/Admin, I can't do that!**")
-      return
-    else:
-      await bot.send_message(user, 'You were banned from **{ctx.message.server.name}**, {reason}!'.format(ctx.message.server.name, reason))
-      await bot.kick(user)
-      await bot.say('<:ElectroSucess:527118398753079317>{} was banned, {}!'.format(user, reason))
-      await bot.delete_message(ctx.message)
-      for channel in user.server.channels:
-        if channel.name == '📡electro-logs':
-            embed=discord.Embed(title="BAN COMMAND USED", description="**User:** {0}\n**Moderator:** {1}".format(user, ctx.message.author), color=0xFDE112)
-            embed.timestamp = datetime.datetime.utcnow()
-            embed.set_footer(text ='USER BANNED')
-            await bot.send_message(channel, embed=embed)        
-
-@bot.command(pass_context=True)  
-@commands.has_permissions(ban_members=True)     
-async def unban(ctx, identification:str):
-    user = await bot.get_user_info(identification)
-    await bot.unban(ctx.message.server, user)
-    try:
-        await bot.say(f'<:ElectroSucess:527118398753079317>**{user} was unbanned!**')
-        for channel in ctx.message.server.channels:
-          if channel.name == '📡electro-logs':
-              embed=discord.Embed(title="UNBAN COMMAND USED", description="**User:** {0}\n**Moderator:**{1}**".format(user, ctx.message.author), color=0x38761D)
-              embed.timestamp = datetime.datetime.utcnow()
-              embed.set_footer(text ='USER BANNED')
-              await bot.send_message(channel, embed=embed)
-    except:
-        await client.say(f'I am unable to unban `{user}`, Please check my role permissions!')
-        pass					
-
-@bot.command(pass_context = True)  
-async def userinfo(ctx, user: discord.Member):
-    r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-    embed = discord.Embed(title="{}'s info".format(user.name), description="HERE WHAT I FOUND!", color = discord.Color((r << 16) + (g << 8) + b))
-    embed.add_field(name="Name", value=user.name, inline=True)
-    embed.add_field(name="ID", value=user.id, inline=True)
-    embed.add_field(name="Status", value=user.status, inline=True)
-    embed.add_field(name="Highest role", value=user.top_role)
-    embed.add_field(name="Joined", value=user.joined_at)
-    embed.set_thumbnail(url=user.avatar_url)
-    await bot.say(embed=embed)	
-
 @bot.command(pass_context = True)  
 async def avatarurl(ctx, user: discord.Member):
 	url = user.avatar_url
